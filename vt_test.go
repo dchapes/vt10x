@@ -10,7 +10,6 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/stretchr/testify/require"
 	"golang.org/x/crypto/ssh/terminal"
 )
 
@@ -88,7 +87,9 @@ type Coord struct {
 
 func TestVTCPR(t *testing.T) {
 	c, _, err := NewVT10XConsole()
-	require.NoError(t, err)
+	if err != nil {
+		t.Fatal(err)
+	}
 	defer c.Close()
 
 	go func() {
@@ -96,9 +97,12 @@ func TestVTCPR(t *testing.T) {
 	}()
 
 	coord, err := cpr(c.Tty())
-	require.NoError(t, err)
-	require.Equal(t, 1, coord.row)
-	require.Equal(t, 1, coord.col)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if g, w := *coord, (Coord{row: 1, col: 1}); g != w {
+		t.Errorf("cpr gave %v, want %v", g, w)
+	}
 }
 
 // cpr is an example application that requests for the cursor position report.
