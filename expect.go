@@ -1,7 +1,7 @@
 package vt10x
 
 import (
-	expect "github.com/Netflix/go-expect"
+	expect "github.com/dchapes/go-expect" // fork of "github.com/Netflix/go-expect"
 	"github.com/kr/pty"
 )
 
