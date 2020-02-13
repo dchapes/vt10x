@@ -1,6 +1,6 @@
-module github.com/hinshun/vt10x
+module github.com/dchapes/vt10x
 
-go 1.10
+go 1.13
 
 require (
 	github.com/dchapes/go-expect v0.0.0-20200213154538-30ea4a156bde

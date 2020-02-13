@@ -6,7 +6,7 @@ import (
 	"os/exec"
 	"time"
 
-	"github.com/hinshun/vt10x"
+	"github.com/dchapes/vt10x"
 	"github.com/kr/pty"
 )
 
